@@ -1,0 +1,18 @@
+import re
+
+def is_valid_pw(pw):
+    mayusc=re.findall("[A-Z]+",pw)
+    dig=re.findall("\d{2}",pw)
+    caract=re.findall("[?*%&@]+",pw)
+    i=1
+    consec=str(dig).replace("[","").replace("]","").replace("'","")
+    if len(pw)>=6 and len(mayusc)>=1 and len(str(dig[0]))>=2 and int(consec[i])!=int(consec[i-1])+1 and caract:
+            print(True)
+    else:
+        print(False)
+    
+is_valid_pw('password')
+is_valid_pw('Password152?')
+is_valid_pw('pywombat')
+is_valid_pw('ExamplePyWombat123?')
+is_valid_pw('ExamplePyWombat135?')
